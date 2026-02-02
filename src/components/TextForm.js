@@ -10,9 +10,14 @@ export default function TextForm(props) {
   }
 
   const handleLoClick = () => {
-    // console.log("Uppercase was clicked : " +text)
+    // console.log("Lowercase was clicked : " +text)
     let newText = text.toLowerCase();
     // setText('You have clicked on handleUpClick')
+    setText(newText);
+  }
+
+  const handleClearClick = () => {
+    let newText = ('');
     setText(newText);
   }
 
@@ -43,6 +48,7 @@ export default function TextForm(props) {
       </div>
       <button className="btn btn-danger mx-1 " onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
       <button className="btn btn-primary mx-1" onClick= {() => setIsBold(!isBold)}>Toggle Bold</button>
     </div>
     <div className="container my-3">
