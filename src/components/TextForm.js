@@ -9,16 +9,25 @@ export default function TextForm(props) {
     setText(newText);
   }
 
+  const handleLoClick = () => {
+    // console.log("Uppercase was clicked : " +text)
+    let newText = text.toLowerCase();
+    // setText('You have clicked on handleUpClick')
+    setText(newText);
+  }
+
   const handleOnChange = (event) => {
     // console.log("Onchanged")
     setText(event.target.value);
   }
 
-  const [text, setText] = useState('Enter text here');
+  const [text, setText] = useState('');
+  const [isBold, setIsBold] = useState(false);
   //text = "new text"; Wrong way to change the state
   //setText("new Text"); Correct way to change the state
   return (
-    <div>
+    <>
+    <div className="contaniner">
       <h1>{props.heading}</h1>
       <div className="mb-3">
         {/* <label for="myBox" className="form-label">
@@ -32,7 +41,19 @@ export default function TextForm(props) {
           onChange={handleOnChange}
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
+      <button className="btn btn-danger mx-1 " onClick={handleUpClick}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-1" onClick= {() => setIsBold(!isBold)}>Toggle Bold</button>
     </div>
+    <div className="container my-3">
+      <h2>Your Text Summary</h2>
+      <p>{text.split(" ").length} words and {text.length} characters</p>
+      <p>{0.008 * text.split(" ").length}Minutes read</p>
+      <h2>Preview</h2>
+      <p style={{ fontWeight: isBold ? 'bold' : 'normal' }}>
+  {text}
+</p>
+    </div>
+    </>
   );
 }
