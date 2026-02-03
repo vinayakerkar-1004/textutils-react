@@ -21,9 +21,19 @@ export default function TextForm(props) {
     setText(newText);
   }
 
+  const handleCopy = () => {
+    console.log("I am Copy");
+    navigator.clipboard.writeText(text);
+  }
+
   const handleOnChange = (event) => {
     // console.log("Onchanged")
     setText(event.target.value);
+  }
+
+  const handleExtraSpaces = () => {
+    let newTask = text.split(/[ ]+/);
+    setText(newTask.join(" "))
   }
 
   const [text, setText] = useState('');
@@ -49,6 +59,8 @@ export default function TextForm(props) {
       <button className="btn btn-danger mx-1 " onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       <button className="btn btn-primary mx-1" onClick= {() => setIsBold(!isBold)}>Toggle Bold</button>
     </div>
     <div className="container my-3">
